@@ -10,6 +10,7 @@
     <version>1.0-SNAPSHOT</version>
     <modules>
         <module>01-concurrent-programming</module>
+        <module>15-distributed-programming</module>
     </modules>
 
 
