@@ -11,6 +11,7 @@
     <modules>
         <module>01-concurrent-programming</module>
         <module>15-distributed-programming</module>
+        <module>10-zookeeper-programming</module>
     </modules>
 
 
