@@ -12,7 +12,7 @@
     <artifactId>15-distributed-programming</artifactId>
     <packaging>pom</packaging>
     <modules>
-        <module>01-cahce</module>
+        <module>01-cache</module>
         <module>02-lock</module>
         <module>03-transaction</module>
     </modules>

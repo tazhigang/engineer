@@ -7,7 +7,5 @@ package com.ittzg.enginner.concurrent._02.count_down_latch;
  * @desc:
  */
 public class CountDownLatch_Case {
-
-
-
+    
 }
