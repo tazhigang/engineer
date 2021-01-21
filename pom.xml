@@ -12,6 +12,7 @@
         <module>01-concurrent-programming</module>
         <module>15-distributed-programming</module>
         <module>10-zookeeper-programming</module>
+        <module>14-redis-programming</module>
     </modules>
 
 
