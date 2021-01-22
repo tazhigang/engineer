@@ -2,5 +2,6 @@
 .idea/
 *.iml
 */src/test
+*/target
 common-soft/
 */soft/*.tar.gz

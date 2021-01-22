@@ -11,7 +11,9 @@
 
     <artifactId>14-redis-programming</artifactId>
     <packaging>pom</packaging>
-
+    <modules>
+        <module>01-article</module>
+    </modules>
 
 
 </project>
