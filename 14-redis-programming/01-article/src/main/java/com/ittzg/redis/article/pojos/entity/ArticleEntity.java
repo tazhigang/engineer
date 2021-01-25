@@ -1,9 +1,7 @@
 package com.ittzg.redis.article.pojos.entity;
 
 import com.alibaba.fastjson.JSONObject;
-import lombok.Builder;
-import lombok.Data;
-import lombok.EqualsAndHashCode;
+import lombok.*;
 import org.springframework.util.StringUtils;
 
 import java.util.Date;
@@ -18,6 +16,8 @@ import java.util.Map;
  */
 @Data
 @EqualsAndHashCode(callSuper=false)
+@NoArgsConstructor
+@AllArgsConstructor
 @Builder
 public class ArticleEntity {
 

@@ -13,6 +13,7 @@ import redis.clients.jedis.Jedis;
 import redis.clients.jedis.JedisPool;
 
 import javax.annotation.PostConstruct;
+import javax.xml.crypto.Data;
 import java.util.*;
 
 import static com.ittzg.redis.article.constant.ArticleConstant.*;
@@ -56,7 +57,10 @@ public class ArticleServiceImpl implements ArticleService {
             if (jedis != null) {
                 jedisConfig.returnResource(jedis);
             }
-
+        }finally {
+            if (jedis != null) {
+                jedisConfig.returnResource(jedis);
+            }
         }
     }
 
@@ -67,23 +71,15 @@ public class ArticleServiceImpl implements ArticleService {
         try {
             String votId = articleVoteInfoKey + articleId;
             articleId = articleKeyPrefix + articleId;
-
             long sadd = jedis.sadd(votId, userInfoKeyPrefix + userId);
-            System.out.println(sadd);
             if (1L == sadd) {
                 jedis.zincrby(articleScoreInfoKey, 1, articleId);
             } else {
                 System.out.println("重复投票");
             }
         } catch (Exception e) {
-            e.printStackTrace();
-            if (jedis != null) {
-                try {
-                    jedisConfig.returnResource(jedis);
-                } catch (Exception e1) {
-                    e1.printStackTrace();
-                }
-            }
+        }finally {
+            jedisConfig.returnResource(jedis);
         }
 
     }
@@ -95,23 +91,23 @@ public class ArticleServiceImpl implements ArticleService {
             List<ArticleDto> list = new ArrayList<>();
             page = (page == 0) ? 1 : page;
             pageSize = (pageSize == 0) ? 20 : pageSize;
-            String min = String.valueOf((page - 1) * pageSize);
-            String max = String.valueOf(page * pageSize - 1);
-            Set<String> articleIds = jedis.zrevrangeByScore(timeSortInfoKey, min, max);
+            long min = (page - 1) * pageSize;
+            long max = page * pageSize - 1;
+            Set<String> articleIds = jedis.zrevrange(timeSortInfoKey, min, max);
             int serNum = 1;
             JSONObject jsonObject;
             for (String articleId : articleIds) {
                 Map<String, String> article = jedis.hgetAll(articleId);
                 jsonObject = (JSONObject) JSONObject.toJSON(article);
-                jsonObject.remove("Id");
+                jsonObject.remove("id");
                 jsonObject.remove("userId");
-
                 ArticleDto articleDto = jsonObject.toJavaObject(ArticleDto.class);
                 articleDto.setSerId(serNum);
+                serNum++;
                 list.add(articleDto);
             }
             return list;
-        } finally {
+        }finally {
             jedisConfig.returnResource(jedis);
         }
     }
@@ -123,19 +119,20 @@ public class ArticleServiceImpl implements ArticleService {
             List<ArticleDto> list = new ArrayList<>();
             page = (page == 0) ? 1 : page;
             pageSize = (pageSize == 0) ? 20 : pageSize;
-            String min = String.valueOf((page - 1) * pageSize);
-            String max = String.valueOf(page * pageSize - 1);
-            Set<String> articleIds = jedis.zrevrangeByScore(articleScoreInfoKey, min, max);
+            long min = (page - 1) * pageSize;
+            long max = page * pageSize - 1;
+            Set<String> articleIds = jedis.zrevrange(articleScoreInfoKey, min, max);
             int serNum = 1;
             JSONObject jsonObject;
             for (String articleId : articleIds) {
                 Map<String, String> article = jedis.hgetAll(articleId);
                 jsonObject = (JSONObject) JSONObject.toJSON(article);
-                jsonObject.remove("Id");
+                jsonObject.remove("id");
                 jsonObject.remove("userId");
 
                 ArticleDto articleDto = jsonObject.toJavaObject(ArticleDto.class);
                 articleDto.setSerId(serNum);
+                serNum++;
                 list.add(articleDto);
             }
             return list;

@@ -28,6 +28,9 @@ public class JedisConfig extends JedisPool {
 
 
     public void returnResource(Jedis resource) {
-        super.returnResource(resource);
+        if(resource!=null){
+            super.returnResource(resource);
+        }
+
     }
 }

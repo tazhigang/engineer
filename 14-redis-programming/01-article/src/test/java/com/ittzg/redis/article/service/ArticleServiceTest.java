@@ -1,6 +1,8 @@
 package com.ittzg.redis.article.service;
 
+import com.alibaba.fastjson.JSONObject;
 import com.ittzg.redis.article.ArticleApplication;
+import com.ittzg.redis.article.pojos.dto.ArticleDto;
 import com.ittzg.redis.article.pojos.entity.ArticleEntity;
 import com.ittzg.redis.article.utils.IdWorker;
 import org.junit.Before;
@@ -65,12 +67,6 @@ class ArticleServiceTest {
         list.add("107628468820381696");
     }
 
-    private static void vote() {
-
-
-    }
-
-
     @Test
     public void postArticle(){
 
@@ -91,10 +87,9 @@ class ArticleServiceTest {
 
     @Test
     public void voteArticle() {
-        for (int i = 0; i <20 ; i++) {
-            System.out.println(i);
+        for (int i = 0; i <1000 ; i++) {
             int index = new SecureRandom().nextInt(19);
-            Long userId = Long.parseLong((worker.nextId()+"").substring(13));
+            Long userId = Long.parseLong((worker.nextId()+"").substring(5));
             System.out.println(Thread.currentThread().getName()+":userId="+userId+":index="+index);
             threadArticleService.voteArticle(list.get(index),userId);
         }
@@ -102,13 +97,18 @@ class ArticleServiceTest {
 
     @Test
     public void findAllByPublishTime(){
+        List<ArticleDto> articleDtos = articleService.findAllByPublishTime(15, 1);
+
+        System.out.println(JSONObject.toJSONString(articleDtos));
 
 
     }
 
     @Test
     public void findAllByScore(){
+        List<ArticleDto> articleDtos = articleService.findAllByScore(15, 1);
 
+        System.out.println(JSONObject.toJSONString(articleDtos));
 
     }
 

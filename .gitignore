@@ -3,5 +3,6 @@
 *.iml
 */src/test
 */target
+*/*/target
 common-soft/
 */soft/*.tar.gz
