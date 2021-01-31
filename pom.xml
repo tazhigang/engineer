@@ -13,6 +13,9 @@
         <module>15-distributed-programming</module>
         <module>10-zookeeper-programming</module>
         <module>14-redis-programming</module>
+        <module>07-nginx-programming</module>
+        <module>08-netty-programming</module>
+        <module>05-tomcat-programming</module>
     </modules>
 
     <dependencies>
