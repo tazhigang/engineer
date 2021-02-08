@@ -16,6 +16,11 @@
         <module>07-nginx-programming</module>
         <module>08-netty-programming</module>
         <module>05-tomcat-programming</module>
+        <module>02-spring-programming</module>
+        <module>00-structure-programming</module>
+        <module>03-mybatis-programming</module>
+        <module>06-mysql-programming</module>
+        <module>04-jvm-programming</module>
     </modules>
 
     <dependencies>
