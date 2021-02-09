@@ -1,7 +1,7 @@
 package com.ittzg.tree;
 
-import java.util.concurrent.ConcurrentHashMap;
-import java.util.concurrent.Executors;
+import java.util.concurrent.locks.ReentrantLock;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author: tazhigang
@@ -13,7 +13,10 @@ public class Btree {
 
     public static void main(String[] args) {
 
-
+        Thread thread = new Thread();
+        ReentrantReadWriteLock lock = new ReentrantReadWriteLock();
+        ReentrantReadWriteLock.WriteLock writeLock = lock.writeLock();
+        ReentrantReadWriteLock.ReadLock readLock = lock.readLock();
 
     }
 }

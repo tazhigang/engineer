@@ -6,14 +6,10 @@ import com.ittzg.redis.article.config.RedisConfigProperties;
 import com.ittzg.redis.article.pojos.dto.ArticleDto;
 import com.ittzg.redis.article.pojos.entity.ArticleEntity;
 import com.ittzg.redis.article.service.ArticleService;
-import com.ittzg.redis.article.utils.IdWorker;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
-import redis.clients.jedis.JedisPool;
 
-import javax.annotation.PostConstruct;
-import javax.xml.crypto.Data;
 import java.util.*;
 
 import static com.ittzg.redis.article.constant.ArticleConstant.*;
