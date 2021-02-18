@@ -7,6 +7,7 @@ import com.ittzg.redis.article.pojos.dto.ArticleDto;
 import com.ittzg.redis.article.pojos.entity.ArticleEntity;
 import com.ittzg.redis.article.service.ArticleService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.context.annotation.AnnotationConfigApplicationContext;
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
@@ -62,6 +63,7 @@ public class ArticleServiceImpl implements ArticleService {
 
     @Override
     public void voteArticle(String articleId, Long userId) {
+
 
         Jedis jedis = jedisConfig.getResource();
         try {

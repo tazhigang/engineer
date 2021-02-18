@@ -26,13 +26,23 @@ public class MyThreadPoolExecutor {
                 System.out.println("-------");
                 countDownLatch.countDown();
                 e.printStackTrace();
+                System.out.println("========================");
+                try {
+                    TimeUnit.SECONDS.sleep(1L);
+                } catch (InterruptedException e1) {
+                    e1.printStackTrace();
+                }
+                e.printStackTrace();
             }
             System.out.println("-------------end-----------------");
 
         });
         thread.start();
         TimeUnit.SECONDS.sleep(1L);
+        System.out.println(thread.isInterrupted());
         thread.interrupt();
+        TimeUnit.SECONDS.sleep(1L);
+        System.out.println(thread.isInterrupted());
         countDownLatch.await();
         System.out.println("-------------main-----------------");
     }
