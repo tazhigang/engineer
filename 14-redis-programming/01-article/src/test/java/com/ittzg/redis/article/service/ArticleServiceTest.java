@@ -69,15 +69,13 @@ class ArticleServiceTest {
 
     @Test
     public void postArticle(){
-
-
         for (int i = 0; i < 20 ; i++) {
             ArticleEntity articleEntity = ArticleEntity.builder()
                     .id(Long.parseLong(list.get(i)))
                     .title("title"+i)
                     .content("content1")
                     .publishTime(new Date())
-                    .userId(Long.parseLong((System.currentTimeMillis()+"").substring(5)))
+                    .userId(System.currentTimeMillis()>>16)
                     .build();
             articleService.postArticle(articleEntity);
         }

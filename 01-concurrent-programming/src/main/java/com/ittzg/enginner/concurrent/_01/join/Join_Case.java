@@ -65,22 +65,18 @@ public class Join_Case {
     public static void thread02() {
         synchronized (lock) {
             System.out.println("开始执行thread02()方法");
-
             try {
                 Thread.sleep(2000L);
             } catch (InterruptedException e) {
                 e.printStackTrace();
             }
-
             System.out.println("完成thread02执行");
         }
-
     }
 
 
     public static synchronized void thread03() {
         System.out.println("开始执行thread03()方法");
-
         System.out.println("完成thread03执行");
     }
 }

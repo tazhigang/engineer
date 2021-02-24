@@ -31,7 +31,6 @@ public class ArticleEntity {
 
     private Long userId;
 
-
     public Map<String,String> toMap(){
         Map<String, String> strMap = new HashMap<>();
         JSONObject jsonObject = (JSONObject) JSONObject.toJSON(this);
@@ -40,5 +39,4 @@ public class ArticleEntity {
         }
         return strMap;
     }
-
 }

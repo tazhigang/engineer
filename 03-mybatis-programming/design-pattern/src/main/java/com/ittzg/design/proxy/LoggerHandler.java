@@ -2,6 +2,7 @@ package com.ittzg.design.proxy;
 
 import java.lang.reflect.InvocationHandler;
 import java.lang.reflect.Method;
+import java.lang.reflect.Proxy;
 import java.util.Base64;
 
 /**
@@ -20,13 +21,13 @@ public class LoggerHandler implements InvocationHandler {
 
         System.out.println("before");
         Object invoke = method.invoke(proxy, args);
-        System.out.println("before");
+        System.out.println("after");
         return invoke;
     }
 
 
-    public static LoggerHandler getInstance() {
-        return null;
+    public static Log getInstance() {
+        return (Log) Proxy.newProxyInstance(LoggerHandler.class.getClassLoader(),new Class[]{Log.class},new LoggerHandler());
     }
 
 

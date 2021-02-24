@@ -11,6 +11,7 @@ import org.springframework.context.annotation.AnnotationConfigApplicationContext
 import org.springframework.stereotype.Service;
 import redis.clients.jedis.Jedis;
 
+import java.io.Writer;
 import java.util.*;
 
 import static com.ittzg.redis.article.constant.ArticleConstant.*;

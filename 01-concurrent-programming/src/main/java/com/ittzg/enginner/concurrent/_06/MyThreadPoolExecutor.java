@@ -1,6 +1,7 @@
 package com.ittzg.enginner.concurrent._06;
 
 import java.util.concurrent.*;
+import java.util.concurrent.locks.ReentrantReadWriteLock;
 
 /**
  * @author: tazhigang
@@ -13,6 +14,10 @@ public class MyThreadPoolExecutor {
 
     public static void main(String[] args) throws InterruptedException {
 
+
+        new ReentrantReadWriteLock();
+
+        new CopyOnWriteArrayList();
 
         CountDownLatch countDownLatch = new CountDownLatch(1);
 

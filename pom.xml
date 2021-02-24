@@ -27,6 +27,7 @@
         <module>03-mybatis-programming</module>
         <module>06-mysql-programming</module>
         <module>04-jvm-programming</module>
+        <module>rsa</module>
     </modules>
 
     <dependencies>
